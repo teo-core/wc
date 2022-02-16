@@ -13,3 +13,6 @@ class Wc():
     @property
     def numero_palabras(self):
         pass
+    
+
+        
