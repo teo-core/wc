@@ -1,18 +1,20 @@
 import mimetypes
 
 class Wc():
+
     def __init__(self,archivo='') -> None:
         self.__archivo = archivo
         self.__cnt_palabras = 0
         self.__cnt_lineas = 0
         self.__ocurrencias = {}
         self.__contenido = ''
+        self.__basura = '",;.:!¡¿?-_'
+        
     
     @property
     def numero_palabras(self):
         return self.__cnt_palabras
     
-
     def __validar_archivo(self):
         mime = mimetypes.guess_type(self.__archivo)
         try:
@@ -20,7 +22,6 @@ class Wc():
             return resp
         except AttributeError:
             raise Exception('Archivo inexistente o inválido')
-
 
     def abrir_archivo(self):
         try:
@@ -35,7 +36,17 @@ class Wc():
     def contar_lineas(self):
         self.__cnt_lineas = len(self.__contenido.split('\n'))
 
-    
+    def __contar_palabras(self):
+        pass
+
+    def __limpiar_cadena(self):
+        limpio = self.__contenido.lower()
+        for c in self.__basura:
+            limpio.replace(c,'')
+        
+        self.__contenido = limpio
+        
+
 
 
         

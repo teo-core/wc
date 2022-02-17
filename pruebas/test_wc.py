@@ -38,4 +38,11 @@ class Testwc(unittest.TestCase):
         w = wc.Wc('/home/teo/proyectos/wc/uno.html')
         w.abrir_archivo()
         w.contar_lineas()
-        self.assertEqual(w._Wc__cnt_lineas,2)
+        self.assertEqual(w._Wc__cnt_lineas,3)
+
+    def test_cadena_a_texto_limpio(self):
+        w = wc.Wc('/home/teo/proyectos/wc/uno.html')
+        txt = """hola\ncaracola sdlkrg ñsldkj m\nen"""
+        w.abrir_archivo()
+        resp = w._Wc__limpiar_cadena()
+        self.assertEqual(w._Wc__contenido, txt)
